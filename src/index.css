@@ -1,0 +1,8 @@
+/* Global stylesheet entry. Tokens + components + font wiring. */
+@import './styles/colors_and_type.css';
+@import './styles/portfolio.css';
+
+/* Wire JetBrains Mono into the mono token for a sharper engineered feel */
+:root {
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
