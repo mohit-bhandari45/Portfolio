@@ -3,10 +3,9 @@
 export const LINKS = {
   email: 'mohitbhandari852@gmail.com',
   phone: '+919548352358',
-  github: 'https://github.com/',
-  linkedin: 'https://www.linkedin.com/',
-  leetcode: 'https://leetcode.com/',
-  gfg: 'https://www.geeksforgeeks.org/',
+  github: 'https://github.com/mohit-bhandari45',
+  linkedin: 'https://www.linkedin.com/in/mohit-bhandari45',
+  leetcode: 'https://leetcode.com/u/mohitbhandari852'
 };
 
 export const PROJECTS = [
