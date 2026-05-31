@@ -13,10 +13,11 @@ export default function About() {
               into products that feel effortless to use.
             </p>
             <p>
-              Currently completing my B.Tech in Computer Science at Uttaranchal University, I've built and
-              shipped a cloud-based coding platform handling 100+ concurrent users, a social commerce app
-              recognized by IIT students and founders, and a published npm utility library. I care about clean
-              architecture, measurable performance, and code that's maintainable long after launch.
+              I'm a final-year B.Tech Computer Science student at Uttaranchal University and currently a
+              Software Development Intern at Acorn Globus, where I build features for the Formester form
+              platform — an AI form builder, smart resume reminders, conditional field logic, and an
+              embeddable form configurator. Alongside, I've shipped a cloud-based coding platform handling
+              100+ concurrent users and a social commerce app recognized by IIT students and founders.
             </p>
             <p>
               Beyond projects, I'm a consistent competitive programmer with 630+ problems solved on LeetCode,

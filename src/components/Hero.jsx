@@ -16,8 +16,9 @@ export default function Hero() {
               Full-stack developer<br />building <span className="accent">fast, scalable</span> systems.
             </h1>
             <p className="hero-sub">
-              I'm Mohit — a final-year Computer Science engineer who ships production-grade web platforms
-              end to end, from cloud editors and execution engines to social commerce apps and open-source tooling.
+              I'm Mohit — a final-year Computer Science engineer currently building the Formester form platform
+              at Acorn Globus. I ship production-grade web systems end to end, from cloud editors and execution
+              engines to social commerce apps.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href="#work">View Selected Work <ArrowRight /></a>
@@ -27,6 +28,7 @@ export default function Hero() {
               <IconLink href={LINKS.github} label="GitHub"><Github /></IconLink>
               <IconLink href={LINKS.linkedin} label="LinkedIn"><LinkedIn /></IconLink>
               <IconLink href={LINKS.leetcode} label="LeetCode"><LeetCode /></IconLink>
+              <IconLink href={LINKS.gfg} label="GeeksforGeeks"><Code /></IconLink>
             </div>
           </div>
 
