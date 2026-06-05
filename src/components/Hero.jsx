@@ -28,7 +28,6 @@ export default function Hero() {
               <IconLink href={LINKS.github} label="GitHub"><Github /></IconLink>
               <IconLink href={LINKS.linkedin} label="LinkedIn"><LinkedIn /></IconLink>
               <IconLink href={LINKS.leetcode} label="LeetCode"><LeetCode /></IconLink>
-              <IconLink href={LINKS.gfg} label="GeeksforGeeks"><Code /></IconLink>
             </div>
           </div>
 

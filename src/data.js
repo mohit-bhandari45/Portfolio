@@ -3,10 +3,9 @@
 export const LINKS = {
   email: 'mohitbhandari852@gmail.com',
   phone: '+919548352358',
-  github: 'https://github.com/',
-  linkedin: 'https://www.linkedin.com/',
-  leetcode: 'https://leetcode.com/',
-  gfg: 'https://www.geeksforgeeks.org/',
+  github: 'https://github.com/mohit-bhandari45',
+  linkedin: 'https://www.linkedin.com/in/mohit-bhandari45',
+  leetcode: 'https://leetcode.com/u/mohitbhandari852',
 };
 
 export const PROJECTS = [
@@ -18,7 +17,7 @@ export const PROJECTS = [
       "Load-tested with simulated concurrent users to ensure stable real-time updates and consistent performance under peak traffic",
     ],
     stack: ['Next.js', 'TypeScript', 'Tailwind', 'Node.js', 'Express', 'MongoDB', 'Redis', 'BullMQ', 'Passport.js', 'JWT'],
-    link: { label: 'Code', href: 'https://github.com/', icon: 'Github' },
+    link: { label: 'Code', href: 'https://github.com/mohit-bhandari45/Koder-Frontend', icon: 'Github' },
   },
   {
     index: '02', name: 'Acrilc', type: 'Social Commerce', year: 'May 2025',
@@ -28,7 +27,7 @@ export const PROJECTS = [
       'Recognized by multiple IIT students and startup founders for an innovative, user-centric product with strong market potential.',
     ],
     stack: ['TypeScript', 'Next.js', 'shadcn/ui', 'Express', 'AWS', 'Redis'],
-    link: { label: 'Code', href: 'https://github.com/', icon: 'Github' },
+    link: { label: 'Code', href: 'https://github.com/mohit-bhandari45/Acrilc-Web', icon: 'Github' },
   },
 ];
 
