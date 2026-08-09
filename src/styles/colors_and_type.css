@@ -5,89 +5,88 @@
 
 :root {
   /* ---------- Font family ---------- */
-  --font-primary: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
-                  Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-primary: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* ---------- Background colors ---------- */
-  --bg-primary:        #080c14;
-  --bg-grey-25:        #0a0f1a;
-  --bg-grey-50:        #0e1422;
-  --bg-grey-100:       #141c2e;
-  --bg-grey-400:       #3a4a6b;
-  --bg-violet-25:      rgba(56, 189, 248, 0.07);
-  --bg-violet-50:      rgba(56, 189, 248, 0.12);
+  --bg-primary:        #000000;
+  --bg-grey-25:        #0a0a0a;
+  --bg-grey-50:        #111111;
+  --bg-grey-100:       #222222;
+  --bg-grey-400:       #333333;
+  --bg-violet-25:      rgba(255, 255, 255, 0.05);
+  --bg-violet-50:      rgba(255, 255, 255, 0.1);
 
   /* ---------- Text / foreground ---------- */
-  --fg-1:              #e8edf8;
-  --fg-2:              #7d8fb8;
-  --fg-3:              #4a5878;
-  --fg-muted:          #2b3550;
-  --fg-strong:         #c0cde8;
+  --fg-1:              #ffffff;
+  --fg-2:              #dddddd;
+  --fg-3:              #aaaaaa;
+  --fg-muted:          #777777;
+  --fg-strong:         #ffffff;
 
   /* ---------- Neutral gray scale ---------- */
-  --gray-25:           #080c14;
-  --gray-50:           #0e1422;
-  --gray-100:          #141c2e;
-  --gray-200:          #1c2540;
-  --gray-300:          #253050;
-  --gray-400:          #3a4a6b;
-  --gray-500:          #4a5878;
-  --gray-700:          #7d8fb8;
-  --gray-900:          #e8edf8;
+  --gray-25:           #000000;
+  --gray-50:           #111111;
+  --gray-100:          #222222;
+  --gray-200:          #333333;
+  --gray-300:          #555555;
+  --gray-400:          #777777;
+  --gray-500:          #999999;
+  --gray-700:          #bbbbbb;
+  --gray-900:          #dddddd;
 
-  /* ---------- Brand: Cyan ---------- */
-  --violet-25:         rgba(56, 189, 248, 0.07);
-  --violet-50:         rgba(56, 189, 248, 0.12);
-  --violet-100:        rgba(56, 189, 248, 0.18);
-  --violet-300:        #67c7f5;
-  --violet-500:        #38bdf8;
-  --violet-600:        #0ea5e9;
-  --violet-700:        #7dd3fc;
+  /* ---------- Brand: White ---------- */
+  --violet-25:         rgba(255, 255, 255, 0.1);
+  --violet-50:         rgba(255, 255, 255, 0.2);
+  --violet-100:        rgba(255, 255, 255, 0.3);
+  --violet-300:        #cccccc;
+  --violet-500:        #ffffff;
+  --violet-600:        #eeeeee;
+  --violet-700:        #dddddd;
 
-  /* ---------- Accent: Magenta ---------- */
-  --magenta:           #f472b6;
-  --magenta-10:        rgba(244, 114, 182, 0.12);
+  /* ---------- Accent: Gray ---------- */
+  --magenta:           #ffffff;
+  --magenta-10:        rgba(255, 255, 255, 0.1);
 
   /* ---------- Semantic: Error ---------- */
-  --error:             #f87171;
-  --error-10:          rgba(248, 113, 113, 0.12);
-  --error-50:          rgba(248, 113, 113, 0.08);
+  --error:             #dddddd;
+  --error-10:          rgba(255, 255, 255, 0.12);
+  --error-50:          rgba(255, 255, 255, 0.08);
 
   /* ---------- Semantic: Success ---------- */
-  --success:           #34d399;
-  --success-10:        rgba(52, 211, 153, 0.12);
-  --success-700:       #6ee7b7;
+  --success:           #ffffff;
+  --success-10:        rgba(255, 255, 255, 0.12);
+  --success-700:       #eeeeee;
 
   /* ---------- Semantic: Warning ---------- */
-  --warning-50:        rgba(251, 191, 36, 0.08);
-  --warning-100:       rgba(251, 191, 36, 0.15);
-  --warning-400:       #fbbf24;
-  --warning-500:       #f59e0b;
-  --warning-600:       #d97706;
+  --warning-50:        rgba(255, 255, 255, 0.08);
+  --warning-100:       rgba(255, 255, 255, 0.15);
+  --warning-400:       #dddddd;
+  --warning-500:       #eeeeee;
+  --warning-600:       #ffffff;
 
   /* ---------- Rose / Emerald (tag palettes) ---------- */
-  --rose-100:          rgba(244, 114, 182, 0.15);
-  --rose-700:          #f9a8d4;
-  --emerald-100:       rgba(52, 211, 153, 0.15);
-  --emerald-700:       #6ee7b7;
+  --rose-100:          rgba(255, 255, 255, 0.15);
+  --rose-700:          #eeeeee;
+  --emerald-100:       rgba(255, 255, 255, 0.15);
+  --emerald-700:       #ffffff;
 
   /* ---------- Borders ---------- */
-  --border-light:      rgba(255, 255, 255, 0.07);
-  --border-medium:     rgba(255, 255, 255, 0.11);
-  --border-dark:       rgba(255, 255, 255, 0.18);
-  --border-violet:     rgba(56, 189, 248, 0.30);
+  --border-light:      rgba(255, 255, 255, 0.15);
+  --border-medium:     rgba(255, 255, 255, 0.3);
+  --border-dark:       rgba(255, 255, 255, 0.5);
+  --border-violet:     rgba(255, 255, 255, 0.6);
 
   /* ---------- Focus rings ---------- */
-  --focus-ring-primary: 0 0 0 3px rgba(56, 189, 248, 0.28);
-  --focus-ring-error:   0 0 0 3px rgba(248, 113, 113, 0.25);
+  --focus-ring-primary: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  --focus-ring-error:   0 0 0 3px rgba(255, 255, 255, 0.25);
 
   /* ---------- Shadows ---------- */
-  --shadow-xs:         0 1px 2px rgba(0, 0, 0, 0.55);
-  --shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.45);
-  --shadow-md:         0 4px 16px rgba(0, 0, 0, 0.45);
-  --shadow-lg:         0 8px 32px rgba(0, 0, 0, 0.65),
-                       0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-xs:         0 1px 2px rgba(255, 255, 255, 0.05);
+  --shadow-sm:         0 2px 8px rgba(255, 255, 255, 0.05);
+  --shadow-md:         0 4px 16px rgba(255, 255, 255, 0.1);
+  --shadow-lg:         0 8px 32px rgba(255, 255, 255, 0.1),
+                       0 2px 8px rgba(255, 255, 255, 0.05);
 
   /* ---------- Font sizes ---------- */
   --fs-tiny:           10px;
@@ -130,13 +129,13 @@
   --space-16:          64px;
 
   /* ---------- Radii ---------- */
-  --r-sm:              2px;
-  --r:                 4px;
-  --r-md:              6px;
-  --r-lg:              8px;
-  --r-xl:              12px;
-  --r-2xl:             16px;
-  --r-3xl:             24px;
+  --r-sm:              0px;
+  --r:                 0px;
+  --r-md:              0px;
+  --r-lg:              0px;
+  --r-xl:              0px;
+  --r-2xl:             0px;
+  --r-3xl:             0px;
   --r-half:            50%;
   --r-full:            9999px;
 
