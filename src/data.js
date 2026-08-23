@@ -8,7 +8,7 @@ export const LINKS = {
   leetcode: 'https://leetcode.com/u/mohitbhandari852',
 };
 
-export const PROJECTS = [
+export const FULL_STACK_PROJECTS = [
   {
     index: '01', name: 'Koder', type: 'Full-Stack Platform', year: 'Jun – Jul 2025',
     desc: 'A scalable coding platform with a cloud-based editor, multi-language execution engine, challenge system, and real-time analytics — engineered for low-latency interactions under load.',
@@ -28,6 +28,19 @@ export const PROJECTS = [
     ],
     stack: ['TypeScript', 'Next.js', 'shadcn/ui', 'Express', 'AWS', 'Redis'],
     link: { label: 'Code', href: 'https://github.com/mohit-bhandari45/Acrilc-Web', icon: 'Github' },
+  },
+];
+
+export const BACKEND_PROJECTS = [
+  {
+    index: '01', name: 'Backend Ledger', type: 'Backend Service', year: '2025',
+    desc: 'A robust backend API system designed for secure ledger management and financial data consistency.',
+    points: [
+      'Developed core ledger logic to safely record and process transactions.',
+      'Implemented secure data handling and integration endpoints for client systems.',
+    ],
+    stack: ['Node.js', 'Express', 'MongoDB', 'TypeScript'],
+    link: { label: 'Code', href: 'https://github.com/mohit-bhandari45/backend-ledger1', icon: 'Github' },
   },
 ];
 

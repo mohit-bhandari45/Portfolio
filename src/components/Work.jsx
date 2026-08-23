@@ -1,4 +1,4 @@
-import { PROJECTS } from '../data.js';
+import { FULL_STACK_PROJECTS, BACKEND_PROJECTS } from '../data.js';
 import { Icons } from './Icons.jsx';
 import { SectionLabel } from './common.jsx';
 
@@ -22,7 +22,7 @@ function Project({ p }) {
         </div>
       </div>
       <div className="p-links">
-        <a className="p-link" href={p.link.href} target="_blank" rel="noopener">
+        <a className="p-link" href={p.link.href} target="_blank" rel="noopener noreferrer">
           <LinkIcon /> {p.link.label}
         </a>
       </div>
@@ -34,9 +34,14 @@ export default function Work() {
   return (
     <section className="section-pad" id="work">
       <div className="container">
-        <SectionLabel num="02" title="Selected Work" />
+        <SectionLabel num="02" title="Full-Stack Projects" />
+        <div className="projects" style={{ marginBottom: '64px' }}>
+          {FULL_STACK_PROJECTS.map((p) => <Project p={p} key={p.index} />)}
+        </div>
+
+        <SectionLabel num="" title="Backend Projects" />
         <div className="projects">
-          {PROJECTS.map((p) => <Project p={p} key={p.index} />)}
+          {BACKEND_PROJECTS.map((p) => <Project p={p} key={p.index} />)}
         </div>
       </div>
     </section>
