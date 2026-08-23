@@ -56,7 +56,7 @@ export const SKILLS = [
 export const EXPERIENCE = [
   {
     role: 'Software Development Intern', org: 'Acorn Globus',
-    meta: 'Jan 2025 – Present', loc: 'Remote',
+    meta: 'Feb 2025 – Jul 2025', loc: 'Remote',
     points: [
       'Integrated an AI form builder into the Formester platform, letting users preview AI-generated forms directly on-site without login.',
       'Built a form-resume reminder that automatically sends a resume link to submitters who abandon a form mid-way, improving completion rates.',
@@ -84,7 +84,7 @@ export const STATS = [
 
 export const FACTS = [
   ['Based in', 'Dehradun, Uttarakhand, India'],
-  ['Currently', 'SDE Intern · Acorn Globus'],
+  ['Currently', 'CS Student'],
   ['Degree', 'B.Tech CS · CGPA 9.1'],
   ['Graduating', 'August 2026'],
   ['LeetCode', '630+ solved · 1549 rating'],
