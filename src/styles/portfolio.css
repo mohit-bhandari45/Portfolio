@@ -660,3 +660,136 @@
     gap: 0;
   }
 }
+
+/* ---------- OSS Page (v2 — kaizakin style) ---------- */
+.oss2-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.oss2-tab {
+  font-size: 0.83rem;
+  font-family: var(--font);
+  color: var(--fg-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.oss2-tab:hover {
+  color: var(--fg-2);
+}
+
+.oss2-tab--active {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+
+/* Org block */
+.oss2-org {
+  margin-bottom: 48px;
+}
+
+.oss2-org-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.oss2-org-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.oss2-org-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.oss2-org-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.oss2-org-name:hover {
+  text-decoration: none;
+  color: var(--fg-2);
+}
+
+.oss2-org-badge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--fg-muted);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  padding: 2px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+/* Rows */
+.oss2-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.oss2-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.oss2-row-icon {
+  padding-top: 1px;
+}
+
+.oss2-row-title {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--fg-2);
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.oss2-row-title:hover {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.oss2-row-repo {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--fg-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.oss2-row-repo:hover {
+  color: var(--fg-2);
+  text-decoration: none;
+}
+
+@media (max-width: 520px) {
+  .oss2-row {
+    flex-wrap: wrap;
+  }
+
+  .oss2-row-repo {
+    display: none;
+  }
+}
