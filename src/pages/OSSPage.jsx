@@ -66,7 +66,7 @@ const ORGS = [
                 repo: 'openstatusHQ/data-table-filters',
                 repoUrl: 'https://github.com/openstatusHQ/data-table-filters',
                 url: 'https://github.com/openstatusHQ/data-table-filters/pull/97',
-                status: 'open', // still open / under review
+                status: 'merged', // merged
             },
             {
                 type: 'pr', number: 95,
@@ -98,7 +98,7 @@ const ORGS = [
                 repo: 'openstatusHQ/data-table-filters',
                 repoUrl: 'https://github.com/openstatusHQ/data-table-filters',
                 url: 'https://github.com/openstatusHQ/data-table-filters/issues/96',
-                status: 'open', // PR #97 pending
+                status: 'closed', // closed
             },
             {
                 type: 'issue', number: 93,
@@ -107,6 +107,46 @@ const ORGS = [
                 repoUrl: 'https://github.com/openstatusHQ/data-table-filters',
                 url: 'https://github.com/openstatusHQ/data-table-filters/issues/93',
                 status: 'closed',
+            },
+        ],
+    },
+    {
+        name: 'ConnectRPC',
+        handle: 'connectrpc',
+        url: 'https://github.com/connectrpc',
+        avatar: 'https://avatars.githubusercontent.com/connectrpc',
+        items: [
+            {
+                type: 'pr', number: 964,
+                title: 'Fix dropped headers on errStreamingClientConn',
+                repo: 'connectrpc/connect-go',
+                repoUrl: 'https://github.com/connectrpc/connect-go',
+                url: 'https://github.com/connectrpc/connect-go/pull/964',
+                status: 'open',
+            },
+            {
+                type: 'issue', number: 963,
+                title: 'errStreamingClientConn Does Not Preserve Headers',
+                repo: 'connectrpc/connect-go',
+                repoUrl: 'https://github.com/connectrpc/connect-go',
+                url: 'https://github.com/connectrpc/connect-go/issues/963',
+                status: 'open',
+            },
+        ],
+    },
+    {
+        name: 'OpenFGA',
+        handle: 'openfga',
+        url: 'https://github.com/openfga',
+        avatar: 'https://avatars.githubusercontent.com/openfga',
+        items: [
+            {
+                type: 'pr', number: 3275,
+                title: 'fix: enforce deadline on sql tuple iterator to prevent goroutine leaks',
+                repo: 'openfga/openfga',
+                repoUrl: 'https://github.com/openfga/openfga',
+                url: 'https://github.com/openfga/openfga/pull/3275',
+                status: 'open',
             },
         ],
     },
