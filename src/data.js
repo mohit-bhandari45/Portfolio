@@ -41,15 +41,16 @@ export const FULL_STACK_PROJECTS = [
 export const BACKEND_PROJECTS = [
   {
     index: '03',
-    name: 'Cody',
+    name: 'Cody (AI PR Reviewer)',
     type: 'Backend',
-    year: '2025',
-    desc: 'An AI-powered PR review bot that automatically reviews pull requests on GitHub. Webhook-driven, queue-based architecture ensures fast GitHub responses while LLM analysis runs in the background.',
+    year: '2026',
+    desc: 'An installable GitHub App that automatically reviews pull requests using AI. Features a webhook-driven, queue-based architecture for real-time analysis across large codebases.',
     points: [
-      'HMAC-SHA256 signature verification on every webhook event prevents forged requests from triggering the bot.',
-      'BullMQ + Redis decouples the webhook receiver from slow LLM calls; Socket.IO dashboard provides live job-status visibility.',
+      'Engineered an incremental state-tracking system using PostgreSQL (Supabase) to persist past review data, separating new bugs from previously resolved issues on new commits.',
+      'Developed a multi-model pipeline running Google Gemini and Meta Llama 3 (via Groq) in parallel for dual-model analysis, chunking massive files to bypass AI token limits.',
+      'Refactored authentication to integrate native GitHub App installation tokens, enabling secure multi-tenant usage and dynamic per-repository configuration via a custom YAML file.',
     ],
-    stack: ['Node.js', 'TypeScript', 'Express', 'BullMQ', 'Redis', 'Socket.IO', 'GitHub API'],
+    stack: ['Node.js', 'TypeScript', 'Google Gemini', 'Llama 3 (Groq)', 'PostgreSQL', 'BullMQ', 'Socket.IO'],
     github: 'https://github.com/mohit-bhandari45/Cody',
   },
   {
