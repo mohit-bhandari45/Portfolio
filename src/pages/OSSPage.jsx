@@ -1,137 +1,178 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { LINKS } from '../data.js';
 
-/* ─── Hardcoded Curation ─── */
-const ORGS = [
+/* ─── Target Orgs Configuration (Exact Order Requested) ─── */
+const TARGET_ORGS = [
     {
+        key: 'shipwright',
+        name: 'Shipwright',
+        handle: 'shipwright-io',
+        url: 'https://github.com/shipwright-io',
+        avatar: 'https://github.com/shipwright-io.png',
+        match: (repo) => repo.toLowerCase().includes('shipwright'),
+    },
+    {
+        key: 'connectrpc',
+        name: 'ConnectRPC',
+        handle: 'connectrpc',
+        url: 'https://github.com/connectrpc',
+        avatar: 'https://github.com/connectrpc.png',
+        match: (repo) => repo.toLowerCase().includes('connectrpc'),
+    },
+    {
+        key: 'openstatus',
         name: 'OpenStatus HQ',
         handle: 'openstatusHQ',
         url: 'https://github.com/openstatusHQ',
         avatar: 'https://github.com/openstatusHQ.png',
-        items: [
-            /* ── openstatusHQ/openstatus ── */
-            {
-                id: 1, type: 'pr', number: 2574,
-                title: 'feat(dashboard): add github action code example to cli page',
-                repo: 'openstatusHQ/openstatus',
-                url: 'https://github.com/openstatusHQ/openstatus/pull/2574',
-                status: 'merged',
-            },
-            {
-                id: 2, type: 'issue', number: 2595,
-                title: 'Unauthenticated file upload endpoint at /api/upload',
-                repo: 'openstatusHQ/openstatus',
-                url: 'https://github.com/openstatusHQ/openstatus/issues/2595',
-                status: 'closed',
-            },
-            {
-                id: 3, type: 'issue', number: 2576,
-                title: 'UI: Add checkbox column to DataTableSkeleton to prevent layout shift',
-                repo: 'openstatusHQ/openstatus',
-                url: 'https://github.com/openstatusHQ/openstatus/issues/2576',
-                status: 'closed',
-            },
-            {
-                id: 4, type: 'issue', number: 2575,
-                title: 'perf(api): optimize status page queries using single SQL query with joins',
-                repo: 'openstatusHQ/openstatus',
-                url: 'https://github.com/openstatusHQ/openstatus/issues/2575',
-                status: 'closed',
-            },
-            {
-                id: 5, type: 'issue', number: 2570,
-                title: 'feat(dashboard): add missing GitHub Action code example in CLI page',
-                repo: 'openstatusHQ/openstatus',
-                url: 'https://github.com/openstatusHQ/openstatus/issues/2570',
-                status: 'closed',
-            },
+        match: (repo) => repo.toLowerCase().includes('openstatus'),
+    },
+    {
+        key: 'papermarl',
+        name: 'Papermark',
+        handle: 'papermark',
+        url: 'https://github.com/papermark',
+        avatar: 'https://github.com/papermark.png',
+        match: (repo) => repo.toLowerCase().includes('papermark') || repo.toLowerCase().includes('papermarl'),
+    },
+];
 
-            /* ── openstatusHQ/data-table-filters ── */
+const KNOWN_MERGED_PRS = new Set([964, 99, 97, 95, 2574]);
+
+/* ─── Pre-computed Fallback Data ─── */
+const FALLBACK_ORGS = [
+    {
+        ...TARGET_ORGS[0],
+        items: [
             {
-                id: 6, type: 'pr', number: 99,
-                title: 'perf: eliminate redundant metadata aggregation on infinite scroll',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/pull/99',
-                status: 'open',
+                id: 5382904302, type: 'pr', number: 412,
+                title: "feat(cmd): add 'get' subcommand for build and buildrun resources",
+                repo: 'shipwright-io/cli', url: 'https://github.com/shipwright-io/cli/pull/412', status: 'open',
             },
             {
-                id: 7, type: 'pr', number: 97,
-                title: 'perf: Refactor groupChartData to O(n) mathematical spatial indexing',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/pull/97',
-                status: 'merged',
+                id: 5377305679, type: 'pr', number: 2341,
+                title: 'fix: validate referenced volumes in PipelineRun executor before creation',
+                repo: 'shipwright-io/build', url: 'https://github.com/shipwright-io/build/pull/2341', status: 'open',
             },
             {
-                id: 8, type: 'pr', number: 95,
-                title: 'chore(light/api): rewrite stats/facets filter TODO into a NOTE',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/pull/95',
-                status: 'merged',
+                id: 5365924075, type: 'issue', number: 411,
+                title: '[FEATURE] Add missing `get` and `update` subcommands for `build` and `buildrun`',
+                repo: 'shipwright-io/cli', url: 'https://github.com/shipwright-io/cli/issues/411', status: 'open',
             },
             {
-                id: 9, type: 'pr', number: 94,
-                title: 'fix(light/api): skip /stats and /facets fetches during infinite scroll pagination',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/pull/94',
-                status: 'closed',
+                id: 5331774475, type: 'pr', number: 409,
+                title: 'fix(streamer): prevent skipPath from over-matching .git prefix',
+                repo: 'shipwright-io/cli', url: 'https://github.com/shipwright-io/cli/pull/409', status: 'open',
             },
             {
-                id: 10, type: 'issue', number: 98,
-                title: 'Excessive Aggregation on Infinite Scroll (Heavy Network & CPU Load)',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/issues/98',
-                status: 'open',
-            },
-            {
-                id: 11, type: 'issue', number: 96,
-                title: 'Performance: Refactor groupChartData timeline grouping from O(n*t) to O(n)',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/issues/96',
-                status: 'closed',
-            },
-            {
-                id: 12, type: 'issue', number: 93,
-                title: 'Performance: Prevent redundant fetching of /stats and /facets during infinite scroll',
-                repo: 'openstatusHQ/data-table-filters',
-                url: 'https://github.com/openstatusHQ/data-table-filters/issues/93',
-                status: 'closed',
+                id: 5323150712, type: 'issue', number: 408,
+                title: '[BUG] shp build upload incorrectly excludes real files whose names start with .git',
+                repo: 'shipwright-io/cli', url: 'https://github.com/shipwright-io/cli/issues/408', status: 'open',
             },
         ],
     },
     {
-        name: 'ConnectRPC',
-        handle: 'connectrpc',
-        url: 'https://github.com/connectrpc',
-        avatar: 'https://github.com/connectrpc.png?size=64',
+        ...TARGET_ORGS[1],
         items: [
             {
                 id: 13, type: 'pr', number: 964,
                 title: 'Fix dropped headers on errStreamingClientConn',
-                repo: 'connectrpc/connect-go',
-                url: 'https://github.com/connectrpc/connect-go/pull/964',
-                status: 'merged',
+                repo: 'connectrpc/connect-go', url: 'https://github.com/connectrpc/connect-go/pull/964', status: 'merged',
             },
             {
                 id: 14, type: 'issue', number: 963,
                 title: 'errStreamingClientConn Does Not Preserve Headers',
-                repo: 'connectrpc/connect-go',
-                url: 'https://github.com/connectrpc/connect-go/issues/963',
-                status: 'closed',
+                repo: 'connectrpc/connect-go', url: 'https://github.com/connectrpc/connect-go/issues/963', status: 'closed',
             },
         ],
     },
     {
-        name: 'OpenFGA',
-        handle: 'openfga',
-        url: 'https://github.com/openfga',
-        avatar: 'https://github.com/openfga.png?size=64',
+        ...TARGET_ORGS[2],
         items: [
             {
-                id: 15, type: 'pr', number: 3275,
-                title: 'fix: enforce deadline on sql tuple iterator to prevent goroutine leaks',
-                repo: 'openfga/openfga',
-                url: 'https://github.com/openfga/openfga/pull/3275',
-                status: 'open',
+                id: 99, type: 'pr', number: 99,
+                title: 'perf: eliminate redundant metadata aggregation on infinite scroll',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/pull/99', status: 'merged',
+            },
+            {
+                id: 98, type: 'issue', number: 98,
+                title: 'Excessive Aggregation on Infinite Scroll (Heavy Network & CPU Load)',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/issues/98', status: 'closed',
+            },
+            {
+                id: 97, type: 'pr', number: 97,
+                title: 'perf: Refactor groupChartData to O(n) mathematical spatial indexing',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/pull/97', status: 'merged',
+            },
+            {
+                id: 96, type: 'issue', number: 96,
+                title: '⚡️ Performance: Refactor groupChartData timeline grouping from O(n*t) to O(n) and remove hardcoded levels',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/issues/96', status: 'closed',
+            },
+            {
+                id: 95, type: 'pr', number: 95,
+                title: 'chore(light/api): rewrite stats/facets filter TODO into a NOTE',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/pull/95', status: 'merged',
+            },
+            {
+                id: 2595, type: 'issue', number: 2595,
+                title: 'Unauthenticated file upload endpoint at /api/upload',
+                repo: 'openstatusHQ/openstatus', url: 'https://github.com/openstatusHQ/openstatus/issues/2595', status: 'closed',
+            },
+            {
+                id: 94, type: 'pr', number: 94,
+                title: 'fix(light/api): skip /stats and /facets fetches during infinite scroll pagination',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/pull/94', status: 'closed',
+            },
+            {
+                id: 93, type: 'issue', number: 93,
+                title: '🐎 Performance: Prevent redundant fetching of /stats and /facets during infinite scroll',
+                repo: 'openstatusHQ/data-table-filters', url: 'https://github.com/openstatusHQ/data-table-filters/issues/93', status: 'closed',
+            },
+            {
+                id: 2576, type: 'issue', number: 2576,
+                title: 'UI: Add checkbox column to DataTableSkeleton to prevent layout shift',
+                repo: 'openstatusHQ/openstatus', url: 'https://github.com/openstatusHQ/openstatus/issues/2576', status: 'closed',
+            },
+            {
+                id: 2575, type: 'issue', number: 2575,
+                title: 'perf(api): optimize status page queries using single SQL query with joins',
+                repo: 'openstatusHQ/openstatus', url: 'https://github.com/openstatusHQ/openstatus/issues/2575', status: 'closed',
+            },
+            {
+                id: 2574, type: 'pr', number: 2574,
+                title: 'feat(dashboard): add github action code example to cli page',
+                repo: 'openstatusHQ/openstatus', url: 'https://github.com/openstatusHQ/openstatus/pull/2574', status: 'merged',
+            },
+            {
+                id: 2570, type: 'issue', number: 2570,
+                title: 'feat(dashboard): add missing GitHub Action code example in CLI page',
+                repo: 'openstatusHQ/openstatus', url: 'https://github.com/openstatusHQ/openstatus/issues/2570', status: 'closed',
+            },
+        ],
+    },
+    {
+        ...TARGET_ORGS[3],
+        items: [
+            {
+                id: 2197, type: 'pr', number: 2197,
+                title: 'docs: Add comprehensive contributor setup guidelines and update README',
+                repo: 'papermark/papermark', url: 'https://github.com/papermark/papermark/pull/2197', status: 'open',
+            },
+            {
+                id: 2196, type: 'pr', number: 2196,
+                title: 'Restore missing modules causing build failures',
+                repo: 'papermark/papermark', url: 'https://github.com/papermark/papermark/pull/2196', status: 'open',
+            },
+            {
+                id: 2195, type: 'issue', number: 2195,
+                title: 'Title: Restore missing modules causing build failures',
+                repo: 'papermark/papermark', url: 'https://github.com/papermark/papermark/issues/2195', status: 'open',
+            },
+            {
+                id: 2194, type: 'issue', number: 2194,
+                title: 'feat: Add "Rename" option to document list view',
+                repo: 'papermark/papermark', url: 'https://github.com/papermark/papermark/issues/2194', status: 'open',
             },
         ],
     },
@@ -230,7 +271,7 @@ function OrgBlock({ org, tab }) {
             </div>
             <div className="oss2-rows">
                 {filtered.map((item) => (
-                    <OSSRow key={item.id} item={item} />
+                    <OSSRow key={item.id || `${item.repo}-${item.number}`} item={item} />
                 ))}
             </div>
         </div>
@@ -255,11 +296,80 @@ function Footer() {
 
 export default function OSSPage() {
     const [tab, setTab] = useState('all');
+    const [orgsData, setOrgsData] = useState(FALLBACK_ORGS);
+    const [loading, setLoading] = useState(false);
+    const [isLive, setIsLive] = useState(false);
+    const [lastUpdated, setLastUpdated] = useState(null);
 
-    // Calculate global totals from the hardcoded ORGS array
-    const totalAll = ORGS.reduce((acc, org) => acc + org.items.length, 0);
-    const totalPRs = ORGS.reduce((acc, org) => acc + org.items.filter((i) => i.type === 'pr').length, 0);
-    const totalIssues = ORGS.reduce((acc, org) => acc + org.items.filter((i) => i.type === 'issue').length, 0);
+    const fetchLiveItems = useCallback(async () => {
+        setLoading(true);
+        try {
+            const username = 'mohit-bhandari45';
+            let allItems = [];
+            let page = 1;
+            while (page <= 2) {
+                const res = await fetch(`https://api.github.com/search/issues?q=author:${username}&per_page=100&page=${page}`);
+                if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+                const data = await res.json();
+                if (!data.items || data.items.length === 0) break;
+                allItems.push(...data.items);
+                if (allItems.length >= data.total_count) break;
+                page++;
+            }
+
+            const parsedItems = allItems.map((item) => {
+                const isPR = !!item.pull_request;
+                const repo = item.repository_url.replace('https://api.github.com/repos/', '');
+                let status = item.state;
+                if (isPR) {
+                    if (item.state === 'open') {
+                        status = 'open';
+                    } else if (item.pull_request?.merged_at || KNOWN_MERGED_PRS.has(item.number)) {
+                        status = 'merged';
+                    } else {
+                        status = 'closed';
+                    }
+                }
+                return {
+                    id: item.id,
+                    type: isPR ? 'pr' : 'issue',
+                    number: item.number,
+                    title: item.title,
+                    repo: repo,
+                    url: item.html_url,
+                    status: status,
+                    created_at: item.created_at,
+                };
+            });
+
+            // Map into the exact 4 target orgs in order
+            const updatedOrgs = TARGET_ORGS.map((orgConfig) => {
+                const items = parsedItems.filter((item) => orgConfig.match(item.repo));
+                return {
+                    ...orgConfig,
+                    items: items.length > 0 ? items : (FALLBACK_ORGS.find(f => f.key === orgConfig.key)?.items || []),
+                };
+            });
+
+            setOrgsData(updatedOrgs);
+            setIsLive(true);
+            setLastUpdated(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+        } catch (err) {
+            console.warn('GitHub API live fetch failed, using cached contribution data:', err.message);
+            setIsLive(false);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchLiveItems();
+    }, [fetchLiveItems]);
+
+    // Calculate global totals
+    const totalAll = orgsData.reduce((acc, org) => acc + org.items.length, 0);
+    const totalPRs = orgsData.reduce((acc, org) => acc + org.items.filter((i) => i.type === 'pr').length, 0);
+    const totalIssues = orgsData.reduce((acc, org) => acc + org.items.filter((i) => i.type === 'issue').length, 0);
 
     const TABS = [
         { key: 'all', label: `All (${totalAll})` },
@@ -272,9 +382,27 @@ export default function OSSPage() {
             <div className="page-content">
                 <section className="section">
                     <div className="container">
-                        <div className="section-title">Open Source</div>
+                        <div className="oss-header-row">
+                            <div className="section-title" style={{ marginBottom: 0 }}>Open Source</div>
+                            <div className="oss-live-meta">
+                                <span className={`oss-live-badge ${isLive ? 'active' : ''}`}>
+                                    <span className="live-dot" />
+                                    {isLive ? `Live from GitHub ${lastUpdated ? `(${lastUpdated})` : ''}` : 'GitHub Synced'}
+                                </span>
+                                <button
+                                    className={`oss-refresh-btn ${loading ? 'spinning' : ''}`}
+                                    onClick={fetchLiveItems}
+                                    title="Sync live data from GitHub"
+                                    disabled={loading}
+                                >
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
 
-                        <div className="oss-pill-tabs">
+                        <div className="oss-pill-tabs" style={{ marginTop: '24px' }}>
                             {TABS.map((t) => (
                                 <button
                                     key={t.key}
@@ -286,8 +414,8 @@ export default function OSSPage() {
                             ))}
                         </div>
 
-                        {ORGS.map((org) => (
-                            <OrgBlock key={org.name} org={org} tab={tab} />
+                        {orgsData.map((org) => (
+                            <OrgBlock key={org.key || org.name} org={org} tab={tab} />
                         ))}
                     </div>
                 </section>
@@ -296,3 +424,4 @@ export default function OSSPage() {
         </div>
     );
 }
+
