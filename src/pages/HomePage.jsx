@@ -3,6 +3,49 @@ import { LINKS, HOME_PROJECTS, EXPERIENCE, SKILLS, FACTS, COURSEWORK } from '../
 import { Github, LinkedIn, Mail } from '../components/Icons.jsx';
 import GitHubContributions from '../components/GitHubContributions.jsx';
 
+const HOME_OSS_PRS = [
+    {
+        type: 'pr',
+        number: 412,
+        title: "feat(cmd): add 'get' subcommand for build and buildrun resources",
+        repo: 'shipwright-io/cli',
+        url: 'https://github.com/shipwright-io/cli/pull/412',
+        status: 'open',
+    },
+    {
+        type: 'pr',
+        number: 2341,
+        title: 'fix: validate referenced volumes in PipelineRun executor before creation',
+        repo: 'shipwright-io/build',
+        url: 'https://github.com/shipwright-io/build/pull/2341',
+        status: 'open',
+    },
+    {
+        type: 'pr',
+        number: 409,
+        title: 'fix(streamer): prevent skipPath from over-matching .git prefix',
+        repo: 'shipwright-io/cli',
+        url: 'https://github.com/shipwright-io/cli/pull/409',
+        status: 'open',
+    },
+];
+
+function PRIcon({ status }) {
+    if (status === 'merged') {
+        return (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#8250df" style={{ flexShrink: 0 }}>
+                <path d="M5.45 5.154A4.25 4.25 0 0 0 9.165 7.5h1.585a2.251 2.251 0 1 1 0 1.5H9.165A5.75 5.75 0 0 1 4 4.361V3.75a2.25 2.25 0 1 1 1.45 2.404ZM4.75 3a.75.75 0 1 0 0 1.5A.75.75 0 0 0 4.75 3Zm6.5 6.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" />
+                <path d="M12 3.5a2.25 2.25 0 1 0-4.5 0 2.25 2.25 0 0 0 4.5 0Zm-1.5 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+            </svg>
+        );
+    }
+    return (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="#1f883d" style={{ flexShrink: 0 }}>
+            <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h.5A3.5 3.5 0 0 1 14 6v6.628a2.251 2.251 0 1 1-1.5 0V6a2 2 0 0 0-2-2h-.5v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z" />
+        </svg>
+    );
+}
+
 function Hero() {
     return (
         <section className="hero">
@@ -28,34 +71,6 @@ function Hero() {
                     <a className="hero-link" href={LINKS.leetcode} target="_blank" rel="noopener noreferrer">
                         LeetCode
                     </a>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function FindMe() {
-    return (
-        <section className="section">
-            <div className="container">
-                <div className="section-title">Find Me</div>
-                <div className="find-me-list">
-                    <div className="find-me-item">
-                        <span className="fm-label">Email</span>
-                        <a href={`mailto:${LINKS.email}`}>{LINKS.email}</a>
-                    </div>
-                    <div className="find-me-item">
-                        <span className="fm-label">GitHub</span>
-                        <a href={LINKS.github} target="_blank" rel="noopener noreferrer">mohit-bhandari45</a>
-                    </div>
-                    <div className="find-me-item">
-                        <span className="fm-label">LinkedIn</span>
-                        <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">mohit-bhandari45</a>
-                    </div>
-                    <div className="find-me-item">
-                        <span className="fm-label">LeetCode</span>
-                        <a href={LINKS.leetcode} target="_blank" rel="noopener noreferrer">mohitbhandari852</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -97,6 +112,32 @@ function Projects() {
                     ))}
                 </div>
                 <Link className="show-more-link" to="/projects">View all projects →</Link>
+            </div>
+        </section>
+    );
+}
+
+function OpenSource() {
+    return (
+        <section className="section">
+            <div className="container">
+                <div className="section-title">Open Source</div>
+                <div className="oss2-rows">
+                    {HOME_OSS_PRS.map((item) => (
+                        <div className="oss2-row" key={item.number}>
+                            <div className="oss2-row-icon">
+                                <PRIcon status={item.status} />
+                            </div>
+                            <a className="oss2-row-title" href={item.url} target="_blank" rel="noopener noreferrer">
+                                {item.title}
+                            </a>
+                            <a className="oss2-row-repo" href={`https://github.com/${item.repo}`} target="_blank" rel="noopener noreferrer">
+                                {item.repo}
+                            </a>
+                        </div>
+                    ))}
+                </div>
+                <Link className="show-more-link" to="/oss">View all open source contributions →</Link>
             </div>
         </section>
     );
@@ -186,11 +227,6 @@ function Footer() {
             <div className="container">
                 <div className="footer-inner">
                     <span className="footer-meta">© 2026 Mohit Bhandari · Dehradun, India</span>
-                    <div className="footer-links">
-                        <a href={LINKS.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href={`mailto:${LINKS.email}`}>Email</a>
-                    </div>
                 </div>
             </div>
         </footer>
@@ -202,9 +238,9 @@ export default function HomePage() {
         <div className="shell">
             <div className="page-content">
                 <Hero />
-                <FindMe />
                 <GitHubContributions username="mohit-bhandari45" />
                 <Projects />
+                <OpenSource />
                 <Experience />
                 <Skills />
                 <About />

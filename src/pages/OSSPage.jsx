@@ -284,10 +284,6 @@ function Footer() {
             <div className="container">
                 <div className="footer-inner">
                     <span className="footer-meta">© 2026 Mohit Bhandari · Dehradun, India</span>
-                    <div className="footer-links">
-                        <a href={LINKS.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href={`mailto:${LINKS.email}`}>Email</a>
-                    </div>
                 </div>
             </div>
         </footer>
