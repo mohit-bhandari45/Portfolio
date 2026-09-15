@@ -41,7 +41,7 @@ export const FULL_STACK_PROJECTS = [
 export const BACKEND_PROJECTS = [
   {
     index: '03',
-    name: 'Cody / Diffie (AI PR Reviewer)',
+    name: 'Diffie (AI PR Reviewer)',
     type: 'Backend',
     year: '2026',
     desc: 'An installable GitHub App and interactive AI code reviewer that performs automated, incremental PR reviews, inline thread explanations, and real-time review pipeline tracking.',
@@ -72,7 +72,7 @@ export const BACKEND_PROJECTS = [
 /* Projects shown on the home page (no type distinction) */
 export const HOME_PROJECTS = [
   FULL_STACK_PROJECTS[0], // Koder
-  BACKEND_PROJECTS[0],    // Cody
+  BACKEND_PROJECTS[0],    // Diffie
 ];
 
 export const SKILLS = [
