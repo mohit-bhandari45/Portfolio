@@ -41,16 +41,17 @@ export const FULL_STACK_PROJECTS = [
 export const BACKEND_PROJECTS = [
   {
     index: '03',
-    name: 'Cody (AI PR Reviewer)',
+    name: 'Cody / Diffie (AI PR Reviewer)',
     type: 'Backend',
     year: '2026',
-    desc: 'An installable GitHub App that automatically reviews pull requests using AI. Features a webhook-driven, queue-based architecture for real-time analysis across large codebases.',
+    desc: 'An installable GitHub App and interactive AI code reviewer that performs automated, incremental PR reviews, inline thread explanations, and real-time review pipeline tracking.',
     points: [
-      'Engineered an incremental state-tracking system using PostgreSQL (Supabase) to persist past review data, separating new bugs from previously resolved issues on new commits.',
-      'Developed a multi-model pipeline running Google Gemini and Meta Llama 3 (via Groq) in parallel for dual-model analysis, chunking massive files to bypass AI token limits.',
-      'Refactored authentication to integrate native GitHub App installation tokens, enabling secure multi-tenant usage and dynamic per-repository configuration via a custom YAML file.',
+      'Built interactive GitHub slash commands (@diffie explain, @diffie review) with inline code thread replies, extracting file paths, line numbers, and diff hunks for context-aware code explanations.',
+      'Engineered an incremental state-tracking engine using PostgreSQL (Supabase) and GitHub compareCommits API to isolate newly introduced bugs from resolved issues across commit pushes.',
+      'Implemented an automatic multi-LLM fallback pipeline (Google Gemini 3.6 Flash failing over to Groq Llama 3.3 70B) to guarantee uninterrupted reviews during AI API rate limits.',
+      'Architected an async queue pipeline using BullMQ, Upstash Redis, and Socket.IO for non-blocking webhook ingestion (200 OK) with live execution updates streamed to a Next.js web dashboard.',
     ],
-    stack: ['Node.js', 'TypeScript', 'Google Gemini', 'Llama 3 (Groq)', 'PostgreSQL', 'BullMQ', 'Socket.IO'],
+    stack: ['Node.js', 'TypeScript', 'Google Gemini', 'Groq (Llama 3.3)', 'PostgreSQL', 'BullMQ', 'Redis', 'Socket.IO', 'Next.js'],
     github: 'https://github.com/mohit-bhandari45/Cody',
   },
   {
