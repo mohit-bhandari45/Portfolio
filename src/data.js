@@ -41,7 +41,22 @@ export const FULL_STACK_PROJECTS = [
 export const BACKEND_PROJECTS = [
   {
     index: '03',
-    name: 'Diffie (AI PR Reviewer)',
+    name: 'Reeling',
+    type: 'Backend',
+    year: '2026',
+    desc: 'An asynchronous, high-throughput video processing service written in Go that handles video uploads, background job queuing, FFmpeg transcoding, and object storage delivery.',
+    points: [
+      'Architected a stateless, horizontally scalable Go API layer that decouples upload ingestion from CPU-intensive transcoding using a swappable durable job queue (in-memory channel / NATS JetStream / SQS).',
+      'Engineered an asynchronous worker pool wrapping FFmpeg to execute video transcoding, automated thumbnail generation, and multi-rendition stream generation with configurable quality profiles.',
+      'Utilized PostgreSQL (pgx/v5) for persistent transactional job state management (queued → processing → done/failed) and AWS S3 / MinIO for scalable raw and processed file delivery.',
+      'Implemented idempotent job execution logic and retry handlers to ensure safe recovery and data consistency during unexpected worker crashes mid-transcode.',
+    ],
+    stack: ['Go', 'FFmpeg', 'PostgreSQL', 'NATS JetStream', 'AWS S3', 'Docker', 'REST API'],
+    github: 'https://github.com/mohit-bhandari45/Reeling',
+  },
+  {
+    index: '04',
+    name: 'Diffie',
     type: 'Backend',
     year: '2026',
     desc: 'An installable GitHub App and interactive AI code reviewer that performs automated, incremental PR reviews, inline thread explanations, and real-time review pipeline tracking.',
@@ -54,25 +69,12 @@ export const BACKEND_PROJECTS = [
     stack: ['Node.js', 'TypeScript', 'Google Gemini', 'Groq (Llama 3.3)', 'PostgreSQL', 'BullMQ', 'Redis', 'Socket.IO', 'Next.js'],
     github: 'https://github.com/mohit-bhandari45/Cody',
   },
-  {
-    index: '04',
-    name: 'Backend Ledger',
-    type: 'Backend',
-    year: '2025',
-    desc: 'A robust backend API system designed for secure ledger management and financial data consistency.',
-    points: [
-      'Developed core ledger logic to safely record and process transactions.',
-      'Implemented secure data handling and integration endpoints for client systems.',
-    ],
-    stack: ['Node.js', 'Express', 'MongoDB', 'TypeScript'],
-    github: 'https://github.com/mohit-bhandari45/backend-ledger1',
-  },
 ];
 
 /* Projects shown on the home page (no type distinction) */
 export const HOME_PROJECTS = [
   FULL_STACK_PROJECTS[0], // Koder
-  BACKEND_PROJECTS[0],    // Diffie
+  BACKEND_PROJECTS[0],    // Reeling
 ];
 
 export const SKILLS = [
