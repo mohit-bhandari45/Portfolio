@@ -13,8 +13,8 @@ export default function About() {
               into products that feel effortless to use.
             </p>
             <p>
-              I'm a final-year B.Tech Computer Science student at Uttaranchal University and currently a
-              Software Development Intern at Acorn Globus, where I build features for the Formester form
+              I'm a B.Tech Computer Science graduate from Uttaranchal University. Previously, I completed a
+              Software Development Internship at Acorn Globus, where I built features for the Formester form
               platform — an AI form builder, smart resume reminders, conditional field logic, and an
               embeddable form configurator. Alongside, I've shipped a cloud-based coding platform handling
               100+ concurrent users and a social commerce app recognized by IIT students and founders.

@@ -53,10 +53,10 @@ function Hero() {
                 <h1 className="hero-name">Mohit Bhandari</h1>
                 <p className="hero-tagline">Full-stack developer</p>
                 <p className="hero-bio">
-                    Final-year B.Tech Computer Science student at Uttaranchal University.
-                    I build production-grade web systems end to end — from cloud editors and execution
-                    engines to social commerce apps. Currently interned at Acorn Globus, building features
-                    for the Formester platform.
+                    B.Tech Computer Science graduate from Uttaranchal University.
+                    I build production-grade web systems end to end — from cloud editors
+                    to social commerce apps. Completed a Software Development Internship at Acorn Globus,
+                    building features for the Formester platform.
                 </p>
                 <div className="hero-links">
                     <a className="hero-link" href={`mailto:${LINKS.email}`}>

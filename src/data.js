@@ -121,11 +121,10 @@ export const STATS = [
 
 export const FACTS = [
   ['Based in', 'Dehradun, Uttarakhand, India'],
-  ['Currently', 'CS Student'],
+  ['Status', 'CS Graduate'],
   ['Degree', 'B.Tech CS · CGPA 9.1'],
-  ['Graduating', 'August 2026'],
   ['LeetCode', '630+ solved · 1549 rating'],
-  ['Open to', 'Full-time SDE roles · 2026'],
+  ['Open to', 'Full-time SDE roles'],
 ];
 
 export const COURSEWORK = [

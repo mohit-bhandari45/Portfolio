@@ -10,15 +10,13 @@ export default function Hero() {
           <div className="hero-left reveal">
             <span className="hero-eyebrow">
               <span className="status-dot" aria-hidden="true"></span>
-              <span className="mono">Available for Summer 2026 · Dehradun, India</span>
+              <span className="mono">Available for Full-time Roles · Dehradun, India</span>
             </span>
             <h1>
               Full-stack developer<br />building <span className="accent">fast, scalable</span> systems.
             </h1>
             <p className="hero-sub">
-              I'm Mohit — a final-year Computer Science engineer currently building the Formester form platform
-              at Acorn Globus. I ship production-grade web systems end to end, from cloud editors and execution
-              engines to social commerce apps.
+              I'm Mohit — a Computer Science graduate who completed a Software Development Internship building features for the Formester platform at Acorn Globus. I ship production-grade web systems end to end, from cloud editors to social commerce apps.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href="#work">View Selected Work <ArrowRight /></a>
