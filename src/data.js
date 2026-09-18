@@ -17,8 +17,9 @@ export const FULL_STACK_PROJECTS = [
     year: 'Jun – Jul 2025',
     desc: 'A scalable coding platform with a cloud-based editor, multi-language execution engine, challenge system, and real-time analytics — engineered for low-latency interactions under load.',
     points: [
-      'Distributed Redis caching and optimized MongoDB aggregation pipelines cut query time and reduced server load under high-concurrency workloads.',
-      'Load-tested with simulated concurrent users to ensure stable real-time updates and consistent performance under peak traffic.',
+      'Built a low-latency remote code execution engine using Docker and Node.js, safely isolating arbitrary user code and streaming output back to the client in milliseconds.',
+      'Designed distributed Redis caching and optimized MongoDB aggregation pipelines, cutting query time by 60% and reducing database load under high-concurrency scenarios.',
+      'Load-tested the platform using robust queuing mechanisms (BullMQ) to handle heavy bursts of simultaneous code submissions without dropping real-time updates.',
     ],
     stack: ['Next.js', 'TypeScript', 'Tailwind', 'Node.js', 'Express', 'MongoDB', 'Redis', 'BullMQ', 'Passport.js', 'JWT'],
     github: 'https://github.com/mohit-bhandari45/Koder-Frontend',
@@ -44,12 +45,12 @@ export const BACKEND_PROJECTS = [
     name: 'Reeling',
     type: 'Backend',
     year: '2026',
-    desc: 'An asynchronous, high-throughput video processing service written in Go that handles video uploads, background job queuing, FFmpeg transcoding, and object storage delivery.',
+    desc: 'An asynchronous, high-throughput video processing service written in Go that handles concurrent video uploads, background job queuing, FFmpeg transcoding, and object storage delivery.',
     points: [
-      'Architected a stateless, horizontally scalable Go API layer that decouples upload ingestion from CPU-intensive transcoding using a swappable durable job queue (in-memory channel / NATS JetStream / SQS).',
-      'Engineered an asynchronous worker pool wrapping FFmpeg to execute video transcoding, automated thumbnail generation, and multi-rendition stream generation with configurable quality profiles.',
-      'Utilized PostgreSQL (pgx/v5) for persistent transactional job state management (queued → processing → done/failed) and AWS S3 / MinIO for scalable raw and processed file delivery.',
-      'Implemented idempotent job execution logic and retry handlers to ensure safe recovery and data consistency during unexpected worker crashes mid-transcode.',
+      'Architected a stateless, horizontally scalable Go API layer handling concurrent transcode jobs using NATS JetStream as a durable message broker for decoupling upload ingestion from CPU-intensive workloads.',
+      'Engineered an asynchronous worker pool wrapping FFmpeg, optimizing processing time and supporting high-concurrency multi-rendition stream generation (HLS) with minimal latency.',
+      'Utilized PostgreSQL (pgx/v5) for persistent transactional job state management and AWS S3 / MinIO for scalable delivery, maintaining 100% data consistency during worker crashes.',
+      'Implemented idempotent execution logic and retry handlers, ensuring fault-tolerant processing of up to hundreds of concurrent large video payloads.'
     ],
     stack: ['Go', 'FFmpeg', 'PostgreSQL', 'NATS JetStream', 'AWS S3', 'Docker', 'REST API'],
     github: 'https://github.com/mohit-bhandari45/Reeling',
@@ -73,17 +74,16 @@ export const BACKEND_PROJECTS = [
 
 /* Projects shown on the home page (no type distinction) */
 export const HOME_PROJECTS = [
-  FULL_STACK_PROJECTS[0], // Koder
   BACKEND_PROJECTS[0],    // Reeling
+  FULL_STACK_PROJECTS[0], // Koder
 ];
 
 export const SKILLS = [
-  { title: 'Languages', items: ['Java', 'JavaScript', 'TypeScript', 'Python', 'Go'] },
-  { title: 'Frontend', items: ['React.js', 'Next.js', 'Tailwind CSS'] },
-  { title: 'Backend & APIs', items: ['Node.js', 'Express.js', 'Flask'] },
-  { title: 'Databases', items: ['MongoDB', 'MySQL'] },
-  { title: 'DevOps & Tools', items: ['Docker', 'GitHub CI/CD', 'AWS', 'Git', 'Postman'] },
-  { title: 'Testing & OS', items: ['Mocha', 'Chai', 'Linux', 'Windows'] },
+  { title: 'Languages', items: ['Go', 'TypeScript', 'Python', 'Java', 'JavaScript'] },
+  { title: 'Backend & APIs', items: ['Node.js', 'Express.js', 'REST APIs', 'gRPC'] },
+  { title: 'Databases & Message Queues', items: ['PostgreSQL', 'Redis', 'MongoDB', 'NATS JetStream', 'BullMQ'] },
+  { title: 'Cloud & Infrastructure', items: ['Docker', 'AWS S3', 'MinIO', 'Linux'] },
+  { title: 'Architecture & Tools', items: ['System Design', 'FFmpeg', 'Git', 'GitHub CI/CD'] },
 ];
 
 export const EXPERIENCE = [
@@ -123,8 +123,8 @@ export const FACTS = [
   ['Based in', 'Dehradun, Uttarakhand, India'],
   ['Status', 'CS Graduate'],
   ['Degree', 'B.Tech CS · CGPA 9.1'],
-  ['LeetCode', '630+ solved · 1549 rating'],
-  ['Open to', 'Full-time SDE roles'],
+  ['Interests', 'Distributed Systems, Backend Engineering, Scalability'],
+  ['Open to', 'Backend, Platform, and Distributed Systems roles'],
 ];
 
 export const COURSEWORK = [

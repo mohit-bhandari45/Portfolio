@@ -51,12 +51,12 @@ function Hero() {
         <section className="hero">
             <div className="container">
                 <h1 className="hero-name">Mohit Bhandari</h1>
-                <p className="hero-tagline">Full-stack developer</p>
+                <p className="hero-tagline">Backend / Systems Engineer | Go · Distributed Systems | Building high-throughput services</p>
                 <p className="hero-bio">
                     B.Tech Computer Science graduate from Uttaranchal University.
-                    I build production-grade web systems end to end — from cloud editors
-                    to social commerce apps. Completed a Software Development Internship at Acorn Globus,
-                    building features for the Formester platform.
+                    I build production-grade backend systems and scalable distributed architectures.
+                    Completed a Software Development Internship at Acorn Globus.
+                    Currently looking for Backend, Platform, and Distributed Systems roles.
                 </p>
                 <div className="hero-links">
                     <a className="hero-link" href={`mailto:${LINKS.email}`}>
@@ -203,6 +203,9 @@ function About() {
         <section className="section">
             <div className="container">
                 <div className="section-title">About</div>
+                <p className="hero-bio" style={{ marginBottom: '2rem', textAlign: 'left' }}>
+                    I am deeply passionate about systems engineering, performance tuning, and building backend-heavy applications. I enjoy tackling complex architectural problems—from distributed task queues and video transcoding pipelines to real-time code execution—while ensuring high reliability and low latency.
+                </p>
                 <div className="find-me-list">
                     {FACTS.map(([label, value]) => (
                         <div className="find-me-item" key={label}>
