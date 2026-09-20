@@ -70,6 +70,22 @@ export const BACKEND_PROJECTS = [
     stack: ['Node.js', 'TypeScript', 'Google Gemini', 'Groq (Llama 3.3)', 'PostgreSQL', 'BullMQ', 'Redis', 'Socket.IO', 'Next.js'],
     github: 'https://github.com/mohit-bhandari45/Cody',
   },
+  {
+    index: '05',
+    name: 'logfast',
+    type: 'Backend',
+    year: '2026',
+    desc: 'A high-throughput, concurrent log stream analyzer and aggregator in Go that ingests, filters, and calculates real-time percentile metrics (p50, p95, p99) over multi-gigabyte log streams with zero heap allocations on the hot path.',
+    points: [
+      'Engineered a lock-free Fan-Out / Fan-In concurrency architecture scaling across CPU threads using worker pools and buffered channels, processing 28M+ log lines/sec at 1.98 GB/s disk read bandwidth.',
+      'Eliminated heap allocations on the parsing path (0 B/op, 0 allocs/op) via custom zero-copy byte parsing and in-place ASCII digit conversion inside CPU registers, achieving sub-15ns parsing speeds.',
+      'Implemented a memory-safe 64KB chunk streaming pipeline with backward newline scanning and tail-stitching to safely preserve log line integrity across chunk boundaries.',
+      'Reduced Garbage Collection pauses to zero using sync.Pool buffer recycling (128KB) and bounded circular Ring Buffers, maintaining a flat memory footprint strictly under 18 MB across multi-gigabyte streams.',
+      'Authored automated Go benchmark suites (go test -benchmem), mathematically verifying 3x speedups and 100% reduction in memory allocations over standard Go strconv pipelines.',
+    ],
+    stack: ['Go', 'Cobra CLI', 'Concurrency', 'Goroutines', 'Channels', 'sync.Pool', 'Ring Buffer', 'Benchmarks'],
+    github: 'https://github.com/mohit-bhandari45/logfast',
+  },
 ];
 
 /* Projects shown on the home page (no type distinction) */
