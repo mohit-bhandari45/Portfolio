@@ -213,6 +213,18 @@
   height: 13px;
 }
 
+.hero-link--resume {
+  color: var(--fg);
+  border-color: var(--fg-muted);
+  font-weight: 500;
+  background: var(--bg-subtle);
+}
+
+.hero-link--resume:hover {
+  border-color: var(--fg-2);
+  background: var(--bg-card);
+}
+
 /* ---------- FIND ME section ---------- */
 .find-me-list {
   display: flex;
