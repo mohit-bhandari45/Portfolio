@@ -70,22 +70,24 @@ function Hero() {
                     Completed a Software Development Internship at Acorn Globus.
                     Currently looking for Backend, Platform, and Distributed Systems roles.
                 </p>
-                <div className="hero-links">
+                <div className="hero-links-stack">
                     <a className="hero-link hero-link--resume" href="/MOHIT_BHANDARI_RESUME.pdf" target="_blank" rel="noopener noreferrer" download="MOHIT_BHANDARI_RESUME.pdf">
                         <ResumeIcon /> Resume
                     </a>
-                    <a className="hero-link" href={`mailto:${LINKS.email}`}>
-                        <Mail /> {LINKS.email}
-                    </a>
-                    <a className="hero-link" href={LINKS.github} target="_blank" rel="noopener noreferrer">
-                        <Github /> GitHub
-                    </a>
-                    <a className="hero-link" href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">
-                        <LinkedIn /> LinkedIn
-                    </a>
-                    <a className="hero-link" href={LINKS.leetcode} target="_blank" rel="noopener noreferrer">
-                        LeetCode
-                    </a>
+                    <div className="hero-links">
+                        <a className="hero-link" href={`mailto:${LINKS.email}`}>
+                            <Mail /> {LINKS.email}
+                        </a>
+                        <a className="hero-link" href={LINKS.github} target="_blank" rel="noopener noreferrer">
+                            <Github /> GitHub
+                        </a>
+                        <a className="hero-link" href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">
+                            <LinkedIn /> LinkedIn
+                        </a>
+                        <a className="hero-link" href={LINKS.leetcode} target="_blank" rel="noopener noreferrer">
+                            LeetCode
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

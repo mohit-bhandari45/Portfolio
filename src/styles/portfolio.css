@@ -182,6 +182,13 @@
   margin-bottom: 28px;
 }
 
+.hero-links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
 .hero-links {
   display: flex;
   flex-wrap: wrap;
